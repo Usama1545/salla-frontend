@@ -62,7 +62,6 @@ const columns = [
 ];
 
 const editPopup = async (id: number) => {
-  console.log(id);
   const { data: popup } = await useAPIFetch(`${URL}/${id}`);
   state.title = popup.value.title;
   state.type = popup.value.type;
@@ -85,7 +84,6 @@ const actions = (row) => [
       label: t("edit"),
       icon: "humbleicons:pencil",
       onSelect: () => {
-        console.log(row.original.id);
         editPopup(row.original.id);
       },
     },
@@ -93,7 +91,6 @@ const actions = (row) => [
       label: t("delete"),
       icon: "humbleicons:trash",
       onSelect: () => {
-        console.log(row.original.id);
         deletePopup(row.original.id);
       },
     },
@@ -106,8 +103,6 @@ const onSubmit = async () => {
     body: {
       title: state.title,
       type: state.type,
-      account_id: 1,
-      marketplace_id: 1,
       content: state.content,
       cta: state.cta,
       image: image.value,
